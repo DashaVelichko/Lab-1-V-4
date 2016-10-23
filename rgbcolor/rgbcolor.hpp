@@ -11,38 +11,47 @@
 
 class RGBColor
 {
+    private:
+    char red,green,blue;
+    unsigned int packedColor;
+    public:
 
-public:
-int red,int green, int blue;
-unsigned int RGBPacked;
+RGBColor(char red_color, char blue_color, char green_color)// конструктор класса с тремя переменными 
 
- RGBColor (){
- red = 255;
- green = 255;
- blue = 255;
-}
-RGBColor() {
-RGBPacked = 16777215;
-}
-getRed();
 {
-return 0
-}
-  
-getGreen();
+    setRed(red_color); // вызов функции установки красного
+	setGreen (green_color); // вызов функции установки зеленого
+	setBlue (blue_color); // вызов функции установки синего
+	
+void setRGBColor (char red_color, char blue_color, char green_color) // установка цвета
 {
-return 0
+   red=red_color; // инициализация красного
+   green=green_color; // инициализация зеленого
+   blue=blue_color; // инициализация синего
+}
+	char getRed(){
+        return red;
+	} 
+	char getGreen(){
+        return green;
+	} 
+	
+	char getBlue(){
+        return blue;
+	} 
+	
 }
 
-getBlue();
+RGBColor (unsigned int packed_Color); // конструктор класса с одной переменной 
 {
-return 0
+	setRGBColor(packed_Color); // вызов функции установки запаковоного цвета
+	
+    void setRGBColor (unsigned int packed_Color) // установка цвета
+ 
+    unsigned int getPackedRGB(){
+         return white;
 }
-
-getRGBPacked();
-{
-return 0
-}
+	
 };
 
 };
