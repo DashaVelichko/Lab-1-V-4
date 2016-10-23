@@ -25,7 +25,7 @@ RGBColor(char red_color, char green_color, char blue_color)// конструкт
 }
 RGBColor (unsigned int packed_color); // конструктор класса с одной переменной 
 {
-	setPackedColor(packed_color); // вызов функции установки запаковоного цвета
+	setPackedRGB(packed_color); // вызов функции установки запаковоного цвета
 }
 	void setRed (char red_color) {
 		red = red_color; // инициализация красного
@@ -37,7 +37,7 @@ RGBColor (unsigned int packed_color); // конструктор класса с 
 		blue = blue_color; // инициализация синего
 	}
 	
-    void setPackedColor (unsigned int packed_color) {
+    void setPackedRGB (unsigned int packed_color) {
 		packedColor = packed_color; // инициализация packedColor
 	}
 	 
@@ -56,7 +56,7 @@ RGBColor (unsigned int packed_color); // конструктор класса с 
 
 
 
-    unsigned int getPackedColor(){
+    unsigned int getPackedRGB(){
          return packedColor; // доступ к private переменной packedColor
 }
 	
