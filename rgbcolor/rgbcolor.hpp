@@ -13,7 +13,7 @@ class RGBColor
 {
     private:
     char red,green,blue;
-    unsigned int packedColor;
+    unsigned int PackedColor;
     public:
 
 RGBColor(char red_color, char green_color, char blue_color)// конструктор класса с тремя переменными 
@@ -37,8 +37,8 @@ RGBColor (unsigned int packed_Color); // конструктор класса с 
 		blue = blue_color; // инициализация синего
 	}
 	
-    void packedColor (unsigned int packed_Color) {
-		packedColor = packed_Color; // инициализация packedColor
+    void setPackedColor (unsigned int packed_Color) {
+		PackedColor = packed_Color; // инициализация packedColor
 	}
 	 
 	 
@@ -56,8 +56,8 @@ RGBColor (unsigned int packed_Color); // конструктор класса с 
 
 
 
-    unsigned int getpackedColor(){
-         return packedColor; // доступ к private переменной packedColor
+    unsigned int getPackedColor(){
+         return PackedColor; // доступ к private переменной packedColor
 }
 	
 };
