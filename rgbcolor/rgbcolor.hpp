@@ -1,4 +1,4 @@
-// (C) 2013-2015, Sergei Zaychenko, KNURE, Kharkiv, Ukraine
+ // (C) 2013-2015, Sergei Zaychenko, KNURE, Kharkiv, Ukraine
 
 #ifndef _RGBCOLOR_HPP_
 #define _RGBCOLOR_HPP_
@@ -8,12 +8,13 @@
 #include <iostream>
 
 
+
 /*****************************************************************************/
 
 class RGBColor
 {
 private:
-	unsigned char red, green, blue;
+	unsigned char red, green, blue, cyan, magenta, yellow, blackkey;
 	unsigned int packedColor;
 
 public:
@@ -26,6 +27,11 @@ public:
 		setBlue(blue_color); // вызов функции установки синего
 		unsigned int p_color = packed_color();
 		setPackedRGB(p_color);
+		setCyanColor(cyan_color);
+		setMagentaColor(magenta_color);
+		setYellowColor(yellow_color);
+		setBlackKey(blackkey_color);
+
 	}
 
 	RGBColor(unsigned int packed_color) // конструктор класса с одной переменной
@@ -97,12 +103,39 @@ public:
 		setRed(red_color);
 		setGreen(green_color);
 		setBlue(blue_color);
-	}
+
+		void setCyanColor(unsigned char cyan_color) {
+			cyan = cyan_color; // инициализация желтого 
+		}
+		void setMagentaColor(unsigned char magenta_color) {
+				magenta = magenta_color; // инициализация пурпурного 
+		}
+		void setYellowColor(unsigned char yellow_color) {
+				yellow = yellow_color; // инициализация желтого 
+		}
+		void setBlackKey(unsigned char blackkey_color) {
+				blackkey = blackkey_color; // инициализация черного
+		}
 
 
 
-};
+		unsigned char getCyan() {
+			return C = (1 - R / 255.0 - K) / (1 - K);
+			}
+		unsigned char getMagentColor() {
+			return M = (1 - G / 255.0 - K) / (1 - K);
+			}
+		unsigned char getYellowColor() {
+			return Y = (1 - B / 255.0 - K) / (1 - K);
+			}
+		unsigned char  getBlackKey() {
+			return  K = 1 - max(R / 255.0, G / 255.0, B / 255.0);
+			}
+		}
 
+
+
+		};
 
 /*****************************************************************************/
 
