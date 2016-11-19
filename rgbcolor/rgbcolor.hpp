@@ -10,11 +10,13 @@
 
 /*****************************************************************************/
 
+
 class RGBColor
 {
 private:
 	unsigned char red, green, blue;
 	unsigned int packedColor;
+	double BlacKey, Cayn, Magent, Yellow;
 
 public:
 
@@ -26,6 +28,10 @@ public:
 		setBlue(blue_color); // вызов функции установки синего
 		unsigned int p_color = packed_color();
 		setPackedRGB(p_color);
+		double BlackKey = blackKey();
+		double CyanColor = cyan_color();
+		double MagentColor = magent_color();
+		double YellowColor = yellow_color();
 	}
 
 	RGBColor(unsigned int packed_color) // конструктор класса с одной переменной
@@ -99,10 +105,43 @@ public:
 		setBlue(blue_color);
 	}
 
+	double blackKey() {
+		double blackKey;
+		blackKey = 1 - max(red / 255.0, green / 255.0, blue / 255.0);
+		return blackKey;
+	}
 
+	double cyan_color() {
+		double cyan_color;
+		cyan_color = (1 - red / 255.0 - blackKey) / (1 - blackKey);
+		return cyan_color;
+	}
+
+	double magent_color() {
+		double magent_color;
+		magent_color = (1 - green / 255.0 - blackKey) / (1 - blackKey);
+		return magent_color;
+	}
+	double yellow_color() {
+		double yellow_color;
+		yellow_color = (1 - blue / 255.0 - blackKey) / (1 - blackKey);
+		return yellow_color;
+	}
+
+	double getBlackKey() {
+		return BlackKey;
+	}
+	double  getCyanColor() {
+		return Cyan;
+	}
+	double  getMagentColor() {
+		return Magent;
+	}
+	double  getYellowColor() {
+		return Yellow;
+	}
 
 };
-
 
 /*****************************************************************************/
 
