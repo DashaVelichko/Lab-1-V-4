@@ -20,12 +20,12 @@ private:
 
 public:
 
-	RGBColor(unsigned char red_color, unsigned char green_color, unsigned char blue_color)// конструктор класса с тремя переменными
+	RGBColor(unsigned char red_color, unsigned char green_color, unsigned char blue_color)// конструктор класса с тремя переменными 
 
 	{
-		setRed(red_color); // вызов функции установки красного
-		setGreen(green_color); // вызов функции установки зеленого
-		setBlue(blue_color); // вызов функции установки синего
+		setRed(red_color); // вызов функции установки красного 
+		setGreen(green_color); // вызов функции установки зеленого 
+		setBlue(blue_color); // вызов функции установки синего 
 		unsigned int p_color = packed_color();
 		setPackedRGB(p_color);
 		double BlackKey = blackKey();
@@ -34,23 +34,23 @@ public:
 		double YellowColor = yellow_color();
 	}
 
-	RGBColor(unsigned int packed_color) // конструктор класса с одной переменной
+	RGBColor(unsigned int packed_color) // конструктор класса с одной переменной 
 	{
-		setPackedRGB(packed_color); // вызов функции установки запаковоного цвета
+		setPackedRGB(packed_color); // вызов функции установки запаковоного цвета 
 		setRGBFromPackedColor();
 	}
 	void setRed(unsigned char red_color) {
-		red = red_color; // инициализация красного
+		red = red_color; // инициализация красного 
 	}
 	void setGreen(unsigned char green_color) {
-		green = green_color; // инициализация зеленого
+		green = green_color; // инициализация зеленого 
 	}
 	void setBlue(unsigned char blue_color) {
-		blue = blue_color; // инициализация синего
+		blue = blue_color; // инициализация синего 
 	}
 
 	void setPackedRGB(unsigned int packed_color) {
-		packedColor = packed_color; // инициализация packedColor
+		packedColor = packed_color; // инициализация packedColor 
 	}
 
 	unsigned int packed_color() {
@@ -61,27 +61,27 @@ public:
 	}
 
 	unsigned char getRed() {
-		return red; // доступ к private переменной red
+		return red; // доступ к private переменной red 
 	}
 	unsigned char getGreen() {
-		return green; // доступ к private переменной green
+		return green; // доступ к private переменной green 
 	}
 
 	unsigned char getBlue() {
-		return blue; // доступ к private переменной blue
+		return blue; // доступ к private переменной blue 
 	}
 
 
 
 
 	unsigned int getPackedRGB() {
-		return packedColor; // доступ к private переменной packedColor
+		return packedColor; // доступ к private переменной packedColor 
 	}
 
-	void setRGBFromPackedColor() { // посчитать реальное значение здесь
+	void setRGBFromPackedColor() { // посчитать реальное значение здесь 
 
 		if (packedColor > 16777215) {
-			std::cout << "\n You have entered not a valid color.\n";
+			std::cout « "\n You have entered not a valid color.\n";
 			exit(EXIT_FAILURE);
 		}
 
@@ -95,9 +95,9 @@ public:
 
 		unsigned char blue_color = (packed_color / 1);
 
-		//std::cout << "\nRed is  " << (int)red_color <<" \n";
-		//std::cout << "Green is  " << (int)green_color <<" \n";
-		//std::cout << "Blue is  " << (int)blue_color <<" \n";
+		//std::cout « "\nRed is " « (int)red_color «" \n"; 
+		//std::cout « "Green is " « (int)green_color «" \n"; 
+		//std::cout « "Blue is " « (int)blue_color «" \n"; 
 
 
 		setRed(red_color);
@@ -131,13 +131,13 @@ public:
 	double getBlackKey() {
 		return BlackKey;
 	}
-	double  getCyanColor() {
+	double getCyanColor() {
 		return Cyan;
 	}
-	double  getMagentColor() {
+	double getMagentColor() {
 		return Magent;
 	}
-	double  getYellowColor() {
+	double getYellowColor() {
 		return Yellow;
 	}
 
