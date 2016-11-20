@@ -16,7 +16,7 @@ class RGBColor
 private:
 	unsigned char red, green, blue;
 	unsigned int packedColor;
-	double BlacKey, Cayn, Magent, Yellow;
+	double BlacKey, CaynColor, MagentColor, YellowColor;
 
 public:
 
@@ -28,16 +28,20 @@ public:
 		setBlue(blue_color); // вызов функции установки синего 
 		unsigned int p_color = packed_color();
 		setPackedRGB(p_color);
-		double BlackKey = blackKey();
-		double CyanColor = cyan_color();
-		double MagentColor = magent_color();
-		double YellowColor = yellow_color();
+		BlackKey = blackKey();
+		CyanColor = cyan_color();
+		MagentColor = magent_color();
+		YellowColor = yellow_color();
 	}
 
 	RGBColor(unsigned int packed_color) // конструктор класса с одной переменной 
 	{
 		setPackedRGB(packed_color); // вызов функции установки запаковоного цвета 
 		setRGBFromPackedColor();
+		BlackKey = blackKey();
+		CyanColor = cyan_color();
+		MagentColor = magent_color();
+		YellowColor = yellow_color();
 	}
 	void setRed(unsigned char red_color) {
 		red = red_color; // инициализация красного 
@@ -109,6 +113,13 @@ public:
 		double blackKey;
 		blackKey = 1 - max(red / 255.0, green / 255.0, blue / 255.0);
 		return blackKey;
+		if (blackKey != 1) {
+			return blackKey;
+		}
+		else {
+			cout << "false" << endl;  // деление на 0
+		}
+		return 0;
 	}
 
 	double cyan_color() {
@@ -132,17 +143,16 @@ public:
 		return BlackKey;
 	}
 	double getCyanColor() {
-		return Cyan;
+		return CyanColor;
 	}
 	double getMagentColor() {
-		return Magent;
+		return MagentColor;
 	}
 	double getYellowColor() {
-		return Yellow;
+		return YellowColor;
 	}
 
 };
-
 /*****************************************************************************/
 
 #endif //  _RGBCOLOR_HPP_
