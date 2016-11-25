@@ -1,4 +1,4 @@
-// (C) 2013-2015, Sergei Zaychenko, KNURE, Kharkiv, Ukraine
+﻿// (C) 2013-2015, Sergei Zaychenko, KNURE, Kharkiv, Ukraine
 
 #ifndef _RGBCOLOR_HPP_
 #define _RGBCOLOR_HPP_
@@ -6,6 +6,7 @@
 /*****************************************************************************/
 
 #include <iostream>
+#include <algorithm> // std::max 
 
 
 /*****************************************************************************/
@@ -113,28 +114,27 @@ public:
 		double blackKey;
 		blackKey = 1 - max(red / 255.0, green / 255.0, blue / 255.0);
 		return blackKey;
-		if (blackKey != 1) {
-			return blackKey;
-		}
-		else {
-			cout << "false" << endl;  // деление на 0
-		}
-		return 0;
+	
 	}
 
 	double cyan_color() {
-		double cyan_color;
+		double cyan_color = 0.0;
+		if (blackKey !=1)  {
 		cyan_color = (1 - red / 255.0 - blackKey) / (1 - blackKey);
+		}
 		return cyan_color;
 	}
 
 	double magent_color() {
-		double magent_color;
+		double magent_color = 0.0;
+		if (blackKey !=1) {
 		magent_color = (1 - green / 255.0 - blackKey) / (1 - blackKey);
+		}
 		return magent_color;
 	}
 	double yellow_color() {
-		double yellow_color;
+		double yellow_color = 0.0;
+		if blackKey !=1  {
 		yellow_color = (1 - blue / 255.0 - blackKey) / (1 - blackKey);
 		return yellow_color;
 	}
