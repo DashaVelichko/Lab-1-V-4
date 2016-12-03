@@ -119,18 +119,18 @@ public:
 		}
 		return cyan_color;
 	}
-
+	
 	double magent_color() {
 		double magent_color = 0.0;
 		if (blackKey != 1.0) {
-			magent_color = (1.0 - green / 255.0 - blackKey) / (1.0 - blackKey);
+			magent_color = (1.0 - (double)green / 255.0 - blackKey) / (1.0 - blackKey);
 		}
 		return magent_color;
 	}
 	double yellow_color() {
 		double yellow_color = 0.0;
 		if (blackKey != 1.0) {
-			yellow_color = (1.0 - blue / 255.0 - blackKey) / (1.0 - blackKey);
+			yellow_color = (1.0 -(double) blue / 255.0 - blackKey) / (1.0 - blackKey);
 			return yellow_color;
 		}
 
