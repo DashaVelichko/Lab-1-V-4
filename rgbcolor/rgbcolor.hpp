@@ -7,17 +7,16 @@
 
 #include <iostream>
 #include <algorithm> // std::max 
-
+using namespace std;
 
 /*****************************************************************************/
-
 
 class RGBColor
 {
 private:
 	unsigned char red, green, blue;
 	unsigned int packedColor;
-	double BlacKey, CaynColor, MagentColor, YellowColor;
+	double BlackKey, CaynColor, MagentColor, YellowColor;
 
 public:
 
@@ -30,7 +29,7 @@ public:
 		unsigned int p_color = packed_color();
 		setPackedRGB(p_color);
 		BlackKey = blackKey();
-		CyanColor = cyan_color();
+		CaynColor = cyan_color();
 		MagentColor = magent_color();
 		YellowColor = yellow_color();
 	}
@@ -40,7 +39,7 @@ public:
 		setPackedRGB(packed_color); // вызов функции установки запаковоного цвета 
 		setRGBFromPackedColor();
 		BlackKey = blackKey();
-		CyanColor = cyan_color();
+		CaynColor = cyan_color();
 		MagentColor = magent_color();
 		YellowColor = yellow_color();
 	}
@@ -76,9 +75,6 @@ public:
 		return blue; // доступ к private переменной blue 
 	}
 
-
-
-
 	unsigned int getPackedRGB() {
 		return packedColor; // доступ к private переменной packedColor 
 	}
@@ -86,7 +82,7 @@ public:
 	void setRGBFromPackedColor() { // посчитать реальное значение здесь 
 
 		if (packedColor > 16777215) {
-			std::cout « "\n You have entered not a valid color.\n";
+			std::cout « "You have entered not a valid color.\n";
 			exit(EXIT_FAILURE);
 		}
 
@@ -104,7 +100,6 @@ public:
 		//std::cout « "Green is " « (int)green_color «" \n"; 
 		//std::cout « "Blue is " « (int)blue_color «" \n"; 
 
-
 		setRed(red_color);
 		setGreen(green_color);
 		setBlue(blue_color);
@@ -112,47 +107,47 @@ public:
 
 	double blackKey() {
 		double blackKey;
-		blackKey = 1 - max(red / 255.0, green / 255.0, blue / 255.0);
+		blackKey = 1.0 - max(red / 255.0, green / 255.0, blue / 255.0);
 		return blackKey;
-	
+
 	}
 
 	double cyan_color() {
 		double cyan_color = 0.0;
-		if (blackKey !=1)  {
-		cyan_color = (1 - red / 255.0 - blackKey) / (1 - blackKey);
+		if (blackKey != 1.0) {
+			cyan_color = (1.0 - (double)red / 255.0 - blackKey) / (1.0 - blackKey);
 		}
 		return cyan_color;
 	}
 
 	double magent_color() {
 		double magent_color = 0.0;
-		if (blackKey !=1) {
-		magent_color = (1 - green / 255.0 - blackKey) / (1 - blackKey);
+		if (blackKey != 1.0) {
+			magent_color = (1.0 - green / 255.0 - blackKey) / (1.0 - blackKey);
 		}
 		return magent_color;
 	}
 	double yellow_color() {
 		double yellow_color = 0.0;
-		if blackKey !=1  {
-		yellow_color = (1 - blue / 255.0 - blackKey) / (1 - blackKey);
-		return yellow_color;
-	}
+		if (blackKey != 1.0) {
+			yellow_color = (1.0 - blue / 255.0 - blackKey) / (1.0 - blackKey);
+			return yellow_color;
+		}
 
-	double getBlackKey() {
-		return BlackKey;
-	}
-	double getCyanColor() {
-		return CyanColor;
-	}
-	double getMagentColor() {
-		return MagentColor;
-	}
-	double getYellowColor() {
-		return YellowColor;
-	}
+		double getBlackKey() {
+			return BlackKey;
+		}
+		double getCyanColor() {
+			return CyanColor;
+		}
+		double getMagentColor() {
+			return MagentColor;
+		}
+		double getYellowColor() {
+			return YellowColor;
+		}
 
+	};
+	/*****************************************************************************/
 };
-/*****************************************************************************/
-
-#endif //  _RGBCOLOR_HPP_
+#endif // _RGBCOLOR_HPP_
