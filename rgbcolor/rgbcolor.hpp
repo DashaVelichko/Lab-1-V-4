@@ -115,7 +115,7 @@ public:
 	double cyan_color() {
 		double cyan_color = 0.0;
 		if (blackKey != 1.0) {
-			cyan_color = (1.0 - (double)red / 255.0 - blackKey) / (1.0 - blackKey);
+			cyan_color = (1.0 - atof(red) / 255.0 - blackKey) / (1.0 - blackKey);
 		}
 		return cyan_color;
 	}
@@ -123,14 +123,14 @@ public:
 	double magent_color() {
 		double magent_color = 0.0;
 		if (blackKey != 1.0) {
-			magent_color = (1.0 - (double)green / 255.0 - blackKey) / (1.0 - blackKey);
+			magent_color = (1.0 - atof(green) / 255.0 - blackKey) / (1.0 - blackKey);
 		}
 		return magent_color;
 	}
 	double yellow_color() {
 		double yellow_color = 0.0;
 		if (blackKey != 1.0) {
-			yellow_color = (1.0 -(double) blue / 255.0 - blackKey) / (1.0 - blackKey);
+			yellow_color = (1.0 - atof(blue) / 255.0 - blackKey) / (1.0 - blackKey);
 			return yellow_color;
 		}
 
