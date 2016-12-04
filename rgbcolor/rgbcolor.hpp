@@ -6,7 +6,7 @@
 /*****************************************************************************/
 
 #include <iostream>
-#include <algorithm> // std::max 
+#include <math.h>
 using namespace std;
 
 /*****************************************************************************/
@@ -20,23 +20,27 @@ private:
 
 public:
 
-	RGBColor(unsigned char red_color, unsigned char green_color, unsigned char blue_color)// конструктор класса с тремя переменными 
+	RGBColor(unsigned char red_color, unsigned char green_color, unsigned char blue_color)// конструктор класса с тремя переменными
 
 	{
-		setRed(red_color); // вызов функции установки красного 
-		setGreen(green_color); // вызов функции установки зеленого 
-		setBlue(blue_color); // вызов функции установки синего 
+		std::cout << "\nRed in constructor is: " << (int)red_color << "\n";
+		std::cout << "\nGreen in constructor is: " << (int)green_color << "\n";
+		std::cout << "\nBlue in constructor is: " << (int)blue_color << "\n";
+		setRed(red_color); // вызов функции установки красного
+		setGreen(green_color); // вызов функции установки зеленого
+		setBlue(blue_color); // вызов функции установки синего
 		unsigned int p_color = packed_color();
 		setPackedRGB(p_color);
 		BlackKey = blackKey();
 		CaynColor = cyan_color();
 		MagentColor = magent_color();
 		YellowColor = yellow_color();
+		inverted_color = InvertedColor();
 	}
 
-	RGBColor(unsigned int packed_color) // конструктор класса с одной переменной 
+	RGBColor(unsigned int packed_color) // конструктор класса с одной переменной
 	{
-		setPackedRGB(packed_color); // вызов функции установки запаковоного цвета 
+		setPackedRGB(packed_color); // вызов функции установки запаковоного цвета
 		setRGBFromPackedColor();
 		BlackKey = blackKey();
 		CaynColor = cyan_color();
@@ -44,17 +48,17 @@ public:
 		YellowColor = yellow_color();
 	}
 	void setRed(unsigned char red_color) {
-		red = red_color; // инициализация красного 
+		red = red_color; // инициализация красного
 	}
 	void setGreen(unsigned char green_color) {
-		green = green_color; // инициализация зеленого 
+		green = green_color; // инициализация зеленого
 	}
 	void setBlue(unsigned char blue_color) {
-		blue = blue_color; // инициализация синего 
+		blue = blue_color; // инициализация синего
 	}
 
 	void setPackedRGB(unsigned int packed_color) {
-		packedColor = packed_color; // инициализация packedColor 
+		packedColor = packed_color; // инициализация packedColor
 	}
 
 	unsigned int packed_color() {
@@ -65,25 +69,25 @@ public:
 	}
 
 	unsigned char getRed() {
-		return red; // доступ к private переменной red 
+		return red; // доступ к private переменной red
 	}
 	unsigned char getGreen() {
-		return green; // доступ к private переменной green 
+		return green; // доступ к private переменной green
 	}
 
 	unsigned char getBlue() {
-		return blue; // доступ к private переменной blue 
+		return blue; // доступ к private переменной blue
 	}
 
 	unsigned int getPackedRGB() {
-		return packedColor; // доступ к private переменной packedColor 
+		return packedColor; // доступ к private переменной packedColor
 	}
 
-	void setRGBFromPackedColor() { // посчитать реальное значение здесь 
+	void setRGBFromPackedColor() { // посчитать реальное значение здесь
 
 		if (packedColor > 16777215) {
-			std::cout « "You have entered not a valid color.\n";
-			exit(EXIT_FAILURE);
+			//std::cout « "You have entered not a valid color.\n";
+			//exit(EXIT_FAILURE);
 		}
 
 		unsigned int packed_color = packedColor;
@@ -96,9 +100,6 @@ public:
 
 		unsigned char blue_color = (packed_color / 1);
 
-		//std::cout « "\nRed is " « (int)red_color «" \n"; 
-		//std::cout « "Green is " « (int)green_color «" \n"; 
-		//std::cout « "Blue is " « (int)blue_color «" \n"; 
 
 		setRed(red_color);
 		setGreen(green_color);
@@ -106,48 +107,97 @@ public:
 	}
 
 	double blackKey() {
-		double blackKey;
-		blackKey = 1.0 - max(red / 255.0, green / 255.0, blue / 255.0);
+		double blackKey = 0.000;
+
+
+		double max = findMax((double)((int)red / 255.0), ((int)green / 255.0), ((int)blue / 255.0));
+		blackKey = 1 - max;
+		blackKey = round(blackKey * 1000.0) / 1000.0;
+
 		return blackKey;
+
+	}
+
+	double findMax(double n1, double n2, double n3) {
+
+
+		if (n1 >= n2)
+		{
+			if (n1 >= n3) {
+
+				return n1;
+
+			}
+			else {
+
+				return n3;
+
+			}
+
+		}
+		else
+		{
+			if (n2 >= n3) {
+
+
+				return n2;
+			}
+			else {
+
+				return n3;
+
+			}
+		}
 
 	}
 
 	double cyan_color() {
 		double cyan_color = 0.0;
-		if (blackKey != 1.0) {
-			cyan_color = (1.0 - atof(red) / 255.0 - blackKey) / (1.0 - blackKey);
+		if (BlackKey != 1.0) {
+			cyan_color = (1.0 - red / 255.0 - BlackKey) / (1.0 - BlackKey);
 		}
 		return cyan_color;
 	}
-	
+
 	double magent_color() {
 		double magent_color = 0.0;
-		if (blackKey != 1.0) {
-			magent_color = (1.0 - atof(green) / 255.0 - blackKey) / (1.0 - blackKey);
+		if (BlackKey != 1.0) {
+			magent_color = (1.0 - green / 255.0 - BlackKey) / (1.0 - BlackKey);
 		}
 		return magent_color;
 	}
+
 	double yellow_color() {
 		double yellow_color = 0.0;
-		if (blackKey != 1.0) {
-			yellow_color = (1.0 - atof(blue) / 255.0 - blackKey) / (1.0 - blackKey);
-			return yellow_color;
+		if (BlackKey != 1.0) {
+			yellow_color = (1.0 - blue / 255.0 - BlackKey) / (1.0 - BlackKey);
 		}
+		return yellow_color;
 
-		double getBlackKey() {
-			return BlackKey;
-		}
-		double getCyanColor() {
-			return CyanColor;
-		}
-		double getMagentColor() {
-			return MagentColor;
-		}
-		double getYellowColor() {
-			return YellowColor;
-		}
+	}
+	double getBlackKey() {
 
-	};
-	/*****************************************************************************/
+		return BlackKey;
+	}
+	double getCyanColor() {
+		return CaynColor;
+	}
+	double getMagentaColor() {
+		return MagentColor;
+	}
+	double getYellowColor() {
+		return YellowColor;
+	}
+
+	RGBColor  getInvertedColor() {
+		red = 255 - red;
+		green = 255 - green;
+		blue = 255 - blue;
+		return RGBColor(0, 0, 0);
+	}
+
+
 };
+/*****************************************************************************/
+
 #endif // _RGBCOLOR_HPP_
