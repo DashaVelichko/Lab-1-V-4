@@ -35,7 +35,7 @@ public:
 		CaynColor = cyan_color();
 		MagentColor = magent_color();
 		YellowColor = yellow_color();
-		inverted_color = InvertedColor();
+		InvertedColor = InvertedColor();
 	}
 
 	RGBColor(unsigned int packed_color) // конструктор класса с одной переменной
@@ -193,7 +193,7 @@ public:
 		red = 255 - red;
 		green = 255 - green;
 		blue = 255 - blue;
-		return RGBColor(0, 0, 0);
+		return RGBColor(red, green, blue);
 	}
 
 
