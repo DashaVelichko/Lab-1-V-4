@@ -5,7 +5,7 @@
 
 /*****************************************************************************/
 
-#include <iostream>
+//#include <iostream>
 #include <math.h>
 using namespace std;
 
@@ -23,9 +23,9 @@ public:
 	RGBColor(unsigned char red_color, unsigned char green_color, unsigned char blue_color)// конструктор класса с тремя переменными
 
 	{
-		std::cout << "\nRed in constructor is: " << (int)red_color << "\n";
-		std::cout << "\nGreen in constructor is: " << (int)green_color << "\n";
-		std::cout << "\nBlue in constructor is: " << (int)blue_color << "\n";
+		//std::cout << "\nRed in constructor is: " << (int)red_color << "\n";
+		//std::cout << "\nGreen in constructor is: " << (int)green_color << "\n";
+		//std::cout << "\nBlue in constructor is: " << (int)blue_color << "\n";
 		setRed(red_color); // вызов функции установки красного
 		setGreen(green_color); // вызов функции установки зеленого
 		setBlue(blue_color); // вызов функции установки синего
@@ -35,10 +35,7 @@ public:
 		CaynColor = cyan_color();
 		MagentColor = magent_color();
 		YellowColor = yellow_color();
-		InvertedColor = InvertedColor();
-		InvertedRed = inverted_red;
-		InvertedGreen = inverted_green;
-		InvertedBlue = inverted_blue; 
+		
 	}
 
 	RGBColor(unsigned int packed_color) // конструктор класса с одной переменной
