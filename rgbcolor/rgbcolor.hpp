@@ -36,6 +36,9 @@ public:
 		MagentColor = magent_color();
 		YellowColor = yellow_color();
 		InvertedColor = InvertedColor();
+		InvertedRed = inverted_red;
+		InvertedGreen = inverted_green;
+		InvertedBlue = inverted_blue; 
 	}
 
 	RGBColor(unsigned int packed_color) // конструктор класса с одной переменной
@@ -190,13 +193,11 @@ public:
 	}
 
 	RGBColor  getInvertedColor() {
-		red = 255 - red;
-		green = 255 - green;
-		blue = 255 - blue;
-		return RGBColor(red, green, blue);
+		inverted_red = 255 - red;
+		inverted_green = 255 - green;
+		inverted_blue = 255 - blue;
+		return RGBColor(inverted_red, inverted_green, inverted_blue);
 	}
-
-
 };
 /*****************************************************************************/
 
