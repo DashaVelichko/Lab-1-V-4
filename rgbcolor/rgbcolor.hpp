@@ -190,10 +190,7 @@ public:
 	}
 
 	RGBColor  getInvertedColor() {
-		inverted_red = 255 - red;
-		inverted_green = 255 - green;
-		inverted_blue = 255 - blue;
-		return RGBColor(inverted_red, inverted_green, inverted_blue);
+		return RGBColor(255 - red, 255 - green, 255 - blue);
 	}
 };
 /*****************************************************************************/
