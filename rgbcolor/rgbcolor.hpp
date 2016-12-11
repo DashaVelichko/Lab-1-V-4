@@ -188,6 +188,11 @@ public:
 	double getYellowColor() {
 		return YellowColor;
 	}
+	 void CaynColor == MagentColor
+		if (1.0 - red / 255.0 - BlackKey) / (1.0 - BlackKey) == (1.0 - green / 255.0 - BlackKey) / (1.0 - BlackKey);
+
+	 void YellowColor != MagentColor
+		 if (1.0 - blue / 255.0 - BlackKey) / (1.0 - BlackKey) != (1.0 - green / 255.0 - BlackKey) / (1.0 - BlackKey);
 
 	RGBColor  getInvertedColor() {
 		return RGBColor(255 - red, 255 - green, 255 - blue);
