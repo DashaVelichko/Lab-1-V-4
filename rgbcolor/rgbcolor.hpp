@@ -188,7 +188,7 @@ public:
 	double getYellowColor() {
 		return YellowColor;
 	}
-	 void CaynColor == MagentColor
+	void CaynColor == MagentColor
 		if (1.0 - red / 255.0 - BlackKey) / (1.0 - BlackKey) == (1.0 - green / 255.0 - BlackKey) / (1.0 - BlackKey);
 
 	 void YellowColor != MagentColor
